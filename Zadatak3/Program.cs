@@ -12,7 +12,6 @@ namespace Zadatak3
         {
             Console.WriteLine("Hello");
             Console.WriteLine("W");
-            Console.WriteLine("Hello");
         }
     }
 }
