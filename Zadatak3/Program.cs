@@ -11,7 +11,7 @@ namespace Zadatak3
         static void Main(string[] args)
         {
             Console.WriteLine("Hello");
-            Console.WriteLine("Wassup");
+            Console.WriteLine("W");
         }
     }
 }
