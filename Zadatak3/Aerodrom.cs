@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zadatak3
 {
-    internal class Program
+    internal class Aerodrom
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

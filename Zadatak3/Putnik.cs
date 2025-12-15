@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zadatak3
 {
-    internal class Program
+    internal class Putnik
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
