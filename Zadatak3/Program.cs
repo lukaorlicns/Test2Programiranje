@@ -76,7 +76,7 @@ namespace Zadatak3
                 }
             }
 
-            NapraviIzvestaj(letovi, parametri, "izvestaj_aerodrom.txt");
+            NapraviIzvestaj(letovi, parametri);
 
 
         }
@@ -306,9 +306,9 @@ namespace Zadatak3
             Console.WriteLine($"ukupno_putnika_za_{dest}:{ukupno}");
         }
 
-        static void NapraviIzvestaj(List<Let> letovi, Parametri parametri, string putanja)
+        static void NapraviIzvestaj(List<Let> letovi, Parametri parametri)
         {
-
+            string putanja = "izvestaj_aerodrom.txt";
             int ukupnoPutnika = letovi.Sum(x => x.poleteli.Count) + letovi.Sum(x => x.propustili.Count);
             double prosecnoKasnjenje = letovi.Any() ? letovi.Average(x => x.kasnjenje) : 0;
             var grupisanoPoGateu = letovi.GroupBy(x => x.gate).Select(g => new { gate = g.Key, brojLetova = g.Count(), putnika = g.Sum(l => l.poleteli.Count) }).OrderByDescending(x => x.putnika).ToList();
