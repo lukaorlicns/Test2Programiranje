@@ -83,68 +83,80 @@ namespace Zadatak3
 
         static List<Let> UcitajLetove(string putanja)
         {
-            var lista = new List<Let>();
-            foreach (var linija in File.ReadAllLines(putanja))
+            List<Let> letovi = new List<Let>();
+            string[] linije = File.ReadAllLines(putanja);
+
+            for (int i = 1; i < linije.Length; i++)
             {
-                var t = linija.Split(';');
-                if (t.Length < 6) continue;
-                lista.Add(new Let
-                {
+                string[] d = linije[i].Split(';');
 
-                    id = t[0].Trim(),
-                    polaziste = t[1].Trim(),
-                    odrediste = t[2].Trim(),
-                    planiranoPoletanje = int.Parse(t[3].Trim()),
-                    trajanje = int.Parse(t[4].Trim()),
-                    gate = int.Parse(t[5].Trim()),
-                    konacnoPoletanje = int.Parse(t[3].Trim()),
-                    kasnjenje = 0
+                Let l = new Let();
+                l.id = d[0];
+                l.polaziste = d[1];
+                l.odrediste = d[2];
+                l.planiranoPoletanje = int.Parse(d[3]);
+                l.trajanje = int.Parse(d[4]);
+                l.gate = int.Parse(d[5]);
 
-                });
+                l.konacnoPoletanje = l.planiranoPoletanje;
+                l.kasnjenje = 0;
+
+                letovi.Add(l);
+
+                Console.WriteLine(
+                    $"{l.id}: {l.polaziste} -> {l.odrediste}, " +
+                    $"planirano: {l.planiranoPoletanje}, " +
+                    $"trajanje: {l.trajanje}, gate: {l.gate}"
+                );
             }
 
-            return lista;
-
+            return letovi;
         }
 
         static List<Putnik> UcitajPutnike(string putanja)
         {
-            var lista = new List<Putnik>();
-            foreach (var linija in File.ReadAllLines(putanja))
+            List<Putnik> putnici = new List<Putnik>();
+            string[] linije = File.ReadAllLines(putanja);
+
+            for (int i = 1; i < linije.Length; i++)
             {
-                var t = linija.Split(';');
-                if (t.Length < 4) continue;
-                lista.Add(new Putnik
-                {
+                string[] d = linije[i].Split(';');
 
-                    id = t[0].Trim(),
-                    imePrezime = t[1].Trim(),
-                    idLeta = t[2].Trim(),
-                    vremeDolaska = int.Parse(t[3].Trim()),
-                    poletio = false
-                });
+                Putnik p = new Putnik();
+                p.id = d[0];
+                p.imePrezime = d[1];
+                p.idLeta = d[2];
+                p.vremeDolaska = int.Parse(d[3]);
+                p.poletio = false;
 
+                putnici.Add(p);
+
+                Console.WriteLine(
+                    $"{p.id}: {p.imePrezime}, " +
+                    $"let: {p.idLeta}, dolazak: {p.vremeDolaska}"
+                );
             }
 
-            return lista;
-
+            return putnici;
         }
 
         static Parametri UcitajParametre(string putanja)
         {
+            string[] linije = File.ReadAllLines(putanja);
+            string[] d = linije[1].Split(';');
 
-            var linija = File.ReadAllLines(putanja).FirstOrDefault();
-            var t = linija.Split(';');
-            return new Parametri
-            {
+            Parametri p = new Parametri();
+            p.trajanjeBoardinga = int.Parse(d[0]);
+            p.kasnjenjePriPunomGateu = int.Parse(d[1]);
+            p.maxPutnikaPoGateu = int.Parse(d[2]);
 
-                trajanjeBoardinga = int.Parse(t[0].Trim()),
-                kasnjenjePriPunomGateu = int.Parse(t[1].Trim()),
-                maxPutnikaPoGateu = int.Parse(t[2].Trim())
+            Console.WriteLine("Trajanje boardinga: " + p.trajanjeBoardinga);
+            Console.WriteLine("Kašnjenje pri punom gate-u: " + p.kasnjenjePriPunomGateu);
+            Console.WriteLine("Max putnika po gate-u: " + p.maxPutnikaPoGateu);
 
-            };
-
+            return p;
         }
+
 
         static void Simuliraj(List<Let> letovi, List<Putnik> putnici, Parametri parametri, int zatvorenGate, int zatvaranjeOd, int zatvaranjeDo, int zamenskiGate)
         {
