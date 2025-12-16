@@ -2,3 +2,4 @@ id_leta;polaziste;odrediste;planirano_poletanje_min;trajanje_min;gate
 A1;BEG;FRA;60;100;1
 A2;BEG;LHR;90;150;2
 A3;BEG;CDG;120;140;1
+A4;BEG;CDG;120;140;1
