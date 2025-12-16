@@ -1,0 +1,4 @@
+﻿id_putnika;ime_prezime;id_leta;vreme_dolaska_na_aerodrom
+P1;Petar Marković;A1;10
+P2;Jovana Ilić;A1;30
+P3;Nemanja Prpa;A2;40

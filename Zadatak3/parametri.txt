@@ -1,0 +1,2 @@
+trajanje_boardinga;kasnjenje_pri_punom_gateu;max_putnika_po_gateu
+30;15;150
