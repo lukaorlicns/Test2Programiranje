@@ -1,0 +1,4 @@
+ukupno_putnika:3
+prosecno_kasnjenje:0.00
+najzaguseniji_gate:1;putnika:2;letova:3
+najvece_kasnjenje_let:A1;kasnjenje:0

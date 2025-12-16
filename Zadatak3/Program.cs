@@ -308,7 +308,7 @@ namespace Zadatak3
 
         static void NapraviIzvestaj(List<Let> letovi, Parametri parametri)
         {
-            string putanja = "izvestaj_aerodrom.txt";
+            string putanja = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),"izvestaj_aerodrom.txt");
             int ukupnoPutnika = letovi.Sum(x => x.poleteli.Count) + letovi.Sum(x => x.propustili.Count);
             double prosecnoKasnjenje = letovi.Any() ? letovi.Average(x => x.kasnjenje) : 0;
             var grupisanoPoGateu = letovi.GroupBy(x => x.gate).Select(g => new { gate = g.Key, brojLetova = g.Count(), putnika = g.Sum(l => l.poleteli.Count) }).OrderByDescending(x => x.putnika).ToList();
@@ -327,11 +327,7 @@ namespace Zadatak3
                 {
                     sw.WriteLine($"najvece_kasnjenje_let:{maxKasnjenje.id};kasnjenje:{maxKasnjenje.kasnjenje}");
                 }
-
-
             }
-
-
         }
     }
 }
